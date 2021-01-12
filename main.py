@@ -23,6 +23,10 @@ class Gomoku:
 
     def update(self):
         for event in pygame.event.get():
+            if self.gameboard.current_piece == 'w':
+                while not self.gameboard.agent_pick():
+                    continue
+                continue
             if event.type == pygame.QUIT:
                 self.going = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
