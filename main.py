@@ -1,6 +1,6 @@
 import pygame
 
-from Board import Board
+from TablaJoc import TablaJoc
 
 
 class Gomoku():
@@ -12,8 +12,7 @@ class Gomoku():
         self.clock = pygame.time.Clock()
         self.font = pygame.font.Font(r"C:\Windows\Fonts\consola.ttf", 24)
         self.going = True
-
-        self.chessboard = Board()
+        self.chessboard = TablaJoc()
 
     def loop(self):
         while self.going:
@@ -24,11 +23,11 @@ class Gomoku():
         pygame.quit()
 
     def update(self):
-        for e in pygame.event.get():
-            if e.type == pygame.QUIT:
+        for eveniment in pygame.event.get():
+            if eveniment.type == pygame.QUIT:
                 self.going = False
-            elif e.type == pygame.MOUSEBUTTONDOWN:
-                self.chessboard.handle_key_event(e)
+            elif eveniment.type == pygame.MOUSEBUTTONDOWN:
+                self.chessboard.handle_eveniment(eveniment)
 
     def draw(self):
         self.screen.fill((255, 255, 255))
@@ -36,7 +35,7 @@ class Gomoku():
 
         self.chessboard.draw(self.screen)
         if self.chessboard.game_over:
-            self.screen.blit(self.font.render("{0} Win".format("Black" if self.chessboard.winner == 'b' else "White"), True, (0, 0, 0)), (500, 10))
+            self.screen.blit(self.font.render("{0} Win".format("Black" if self.chessboard.castigator == 'b' else "White"), True, (0, 0, 0)), (500, 10))
 
         pygame.display.update()
 
