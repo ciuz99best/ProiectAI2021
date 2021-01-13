@@ -16,6 +16,8 @@ class TablaJoc:
         for i in range(self.dimensiune_tabla):
             self.retea.append(list("." * self.dimensiune_tabla))
 
+
+
     def handle_eveniment(self, eveniment):
         origin_x = self.x_initial - self.dim_muchie
         origin_y = self.y_initial - self.dim_muchie
