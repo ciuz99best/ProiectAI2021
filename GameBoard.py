@@ -1,5 +1,6 @@
 import pygame
 from Agent import Agent
+import random
 
 
 class GameBoard:
@@ -13,10 +14,68 @@ class GameBoard:
         self.winner = None
         self.game_over = False
         self.agent = Agent(1, self.board_size)
-
+        self.first_move = True
         self.board = []
         for i in range(self.board_size):
             self.board.append(list("." * self.board_size))
+    """
+    
+
+    The first player puts three stones (two blacks and one white) on any intersections of the gomoku board. 
+    The second player has three options now:
+
+ 
+
+    a)      s/he can choose white and puts the 4th stone
+
+    b)     s/he can swap and controls the black stones
+
+    c)      s/he can put two more stones (one black and one white stone) so there will be a position composed of five 
+    stones on the board and s/he passes the opportunity to choose colour to the opponent.
+    """
+
+
+    def swap2_move(self, row, col):
+        if self.first_move:
+            row=random.randint(self.table_size)
+            col=random.randint(self.table_size)
+            self.place_move(row,col)
+            self.current_piece='b'
+            row = random.randint(self.table_size)
+            col = random.randint(self.table_size)
+            self.place_move(row, col)
+            self.current_piece = 'b'
+            row = random.randint(self.table_size)
+            col = random.randint(self.table_size)
+            self.place_move(row, col)
+            self.current_piece = 'w'
+            if self.choice_second_player=='1':
+                self.current_piece='w'
+                row = random.randint(self.table_size)
+                col = random.randint(self.table_size)
+                self.place_move(row, col)
+            elif self.choice_second_player=='2':
+                self.current_piece='b'
+            else:
+                row = random.randint(self.table_size)
+                col = random.randint(self.table_size)
+                self.place_move(row, col)
+                self.current_piece = 'b'
+                row = random.randint(self.table_size)
+                col = random.randint(self.table_size)
+                self.place_move(row, col)
+                self.current_piece = 'w'
+
+
+
+
+
+
+
+
+
+
+
 
     def mouse_handler(self, mouse):
         origin_x = self.x_init - self.margin_size
