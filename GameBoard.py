@@ -37,44 +37,34 @@ class GameBoard:
 
     def swap2_move(self, row, col):
         if self.first_move:
-            row=random.randint(self.table_size)
-            col=random.randint(self.table_size)
+            row=random.randint(0,self.board_size)
+            col=random.randint(0,self.board_size)
             self.place_move(row,col)
             self.current_piece='b'
-            row = random.randint(self.table_size)
-            col = random.randint(self.table_size)
+            row = random.randint(0,self.board_size)
+            col = random.randint(0,self.board_size)
             self.place_move(row, col)
             self.current_piece = 'b'
-            row = random.randint(self.table_size)
-            col = random.randint(self.table_size)
+            row = random.randint(0,self.board_size)
+            col = random.randint(0,self.board_size)
             self.place_move(row, col)
             self.current_piece = 'w'
             if self.choice_second_player=='1':
                 self.current_piece='w'
-                row = random.randint(self.table_size)
-                col = random.randint(self.table_size)
+                row = random.randint(0,self.board_size)
+                col = random.randint(0,self.board_size)
                 self.place_move(row, col)
             elif self.choice_second_player=='2':
                 self.current_piece='b'
             else:
-                row = random.randint(self.table_size)
-                col = random.randint(self.table_size)
+                row = random.randint(0,self.board_size)
+                col = random.randint(0,self.board_size)
                 self.place_move(row, col)
                 self.current_piece = 'b'
-                row = random.randint(self.table_size)
-                col = random.randint(self.table_size)
+                row = random.randint(0,self.board_size)
+                col = random.randint(0,self.board_size)
                 self.place_move(row, col)
                 self.current_piece = 'w'
-
-
-
-
-
-
-
-
-
-
 
 
     def mouse_handler(self, mouse):
